@@ -1,0 +1,147 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{forster2012analysis3}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=96ce1d14558df12bbb9e32a33456136c}{%
+           family={Forster},
+           familyi={F\bibinitperiod},
+           given={O.},
+           giveni={O\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Vieweg+Teubner Verlag}%
+      }
+      \strng{namehash}{96ce1d14558df12bbb9e32a33456136c}
+      \strng{fullhash}{96ce1d14558df12bbb9e32a33456136c}
+      \strng{fullhashraw}{96ce1d14558df12bbb9e32a33456136c}
+      \strng{bibnamehash}{96ce1d14558df12bbb9e32a33456136c}
+      \strng{authorbibnamehash}{96ce1d14558df12bbb9e32a33456136c}
+      \strng{authornamehash}{96ce1d14558df12bbb9e32a33456136c}
+      \strng{authorfullhash}{96ce1d14558df12bbb9e32a33456136c}
+      \strng{authorfullhashraw}{96ce1d14558df12bbb9e32a33456136c}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9783834823748}
+      \field{series}{Aufbaukurs Mathematik}
+      \field{title}{Analysis 3: Ma{ß}- und Integrationstheorie, Integralsätze im IRn und Anwendungen}
+      \field{year}{2012}
+      \verb{urlraw}
+      \verb https://books.google.de/books?id=BNojBAAAQBAJ
+      \endverb
+      \verb{url}
+      \verb https://books.google.de/books?id=BNojBAAAQBAJ
+      \endverb
+    \endentry
+    \entry{plesken1994}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=7c90dde4822b0ab48782e9e768bf74a6}{%
+           family={Plesken},
+           familyi={P\bibinitperiod},
+           given={Wilhelm},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Lehrstuhl B fuer Mathematik, RWTH Aachen}%
+      }
+      \strng{namehash}{7c90dde4822b0ab48782e9e768bf74a6}
+      \strng{fullhash}{7c90dde4822b0ab48782e9e768bf74a6}
+      \strng{fullhashraw}{7c90dde4822b0ab48782e9e768bf74a6}
+      \strng{bibnamehash}{7c90dde4822b0ab48782e9e768bf74a6}
+      \strng{authorbibnamehash}{7c90dde4822b0ab48782e9e768bf74a6}
+      \strng{authornamehash}{7c90dde4822b0ab48782e9e768bf74a6}
+      \strng{authorfullhash}{7c90dde4822b0ab48782e9e768bf74a6}
+      \strng{authorfullhashraw}{7c90dde4822b0ab48782e9e768bf74a6}
+      \field{extraname}{1}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Kristallographische Gruppen, Summer semester}
+      \field{year}{1994}
+    \endentry
+    \entry{plesken2014}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=7c90dde4822b0ab48782e9e768bf74a6}{%
+           family={Plesken},
+           familyi={P\bibinitperiod},
+           given={Wilhelm},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Lehrstuhl B fuer Mathematik, RWTH Aachen}%
+      }
+      \strng{namehash}{7c90dde4822b0ab48782e9e768bf74a6}
+      \strng{fullhash}{7c90dde4822b0ab48782e9e768bf74a6}
+      \strng{fullhashraw}{7c90dde4822b0ab48782e9e768bf74a6}
+      \strng{bibnamehash}{7c90dde4822b0ab48782e9e768bf74a6}
+      \strng{authorbibnamehash}{7c90dde4822b0ab48782e9e768bf74a6}
+      \strng{authornamehash}{7c90dde4822b0ab48782e9e768bf74a6}
+      \strng{authorfullhash}{7c90dde4822b0ab48782e9e768bf74a6}
+      \strng{authorfullhashraw}{7c90dde4822b0ab48782e9e768bf74a6}
+      \field{extraname}{2}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Kristallographische Gruppen, Summer semester}
+      \field{year}{2014}
+    \endentry
+    \entry{szczepanski2012geometry}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=d51630ea4d95581928aeadc15d6741e4}{%
+           family={Szczepanski},
+           familyi={S\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {World Scientific}%
+      }
+      \strng{namehash}{d51630ea4d95581928aeadc15d6741e4}
+      \strng{fullhash}{d51630ea4d95581928aeadc15d6741e4}
+      \strng{fullhashraw}{d51630ea4d95581928aeadc15d6741e4}
+      \strng{bibnamehash}{d51630ea4d95581928aeadc15d6741e4}
+      \strng{authorbibnamehash}{d51630ea4d95581928aeadc15d6741e4}
+      \strng{authornamehash}{d51630ea4d95581928aeadc15d6741e4}
+      \strng{authorfullhash}{d51630ea4d95581928aeadc15d6741e4}
+      \strng{authorfullhashraw}{d51630ea4d95581928aeadc15d6741e4}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9789814412261}
+      \field{series}{Algebra and discrete mathematics}
+      \field{title}{Geometry of Crystallographic Groups}
+      \field{year}{2012}
+      \verb{urlraw}
+      \verb https://books.google.de/books?id=wX26CgAAQBAJ
+      \endverb
+      \verb{url}
+      \verb https://books.google.de/books?id=wX26CgAAQBAJ
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -79,6 +79,21 @@ style=numeric,
 \renewcommand{\phi}{\varphi}
 \renewcommand{\epsilon}{\varepsilon}
 
+
+\newcommand{\stab}{\mathrm{Stab}}
+\newcommand{\conv}{\mathrm{conv}}
+\newcommand{\vol}{\mathrm{vol}}
+% \newcommand{\min}{\text{min}}
+% \newcommand{\max}{\text{max}}
+% \newcommand{\ker}{\text{ker}}
+\newcommand{\im}{{\mathrm{im}}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\Aut}{{\mathrm{Aut}}}
+
+\newcommand{\T}{\mathcal{T}}
+\renewcommand{\P}{\mathcal{P}}
+\renewcommand{\L}{\mathcal{L}}
+
 \usetheme[compress]{Berlin}
 \setbeamertemplate{footline}[frame number]{}
 \setbeamertemplate{navigation symbols}{}
@@ -99,7 +114,7 @@ style=numeric,
 % remove dots on first slide
 \frame[plain]{\titlepage}
 
-\section{Definitions}
+\section{Crystallographic groups}
 
 % Fund. Domain
 % Crystallographic group
@@ -159,8 +174,82 @@ style=numeric,
 \end{frame}
 
 \begin{frame}
-    the problem of Computing Dirichlet Cells
+    \begin{example}
+        \begin{align*}
+            p4 \coloneqq \Biggl<
+            &\rho \coloneqq \left( \begin{pmatrix} 0 &1 \\ -1 &0\end{pmatrix}, \begin{pmatrix} 0 \\ 0 \end{pmatrix}^T\right),\\
+            &\tau_1 \coloneqq \left( \begin{pmatrix} 1 &0 \\ 0 &1\end{pmatrix}, \begin{pmatrix} 1 \\ 0 \end{pmatrix}^T\right), \\
+            &\tau_2 \coloneqq \left( \begin{pmatrix} 1 &0 \\ 0 &1\end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix}^T\right) \Biggr>
+        \end{align*}
+    \end{example}
 \end{frame}
+
+\begin{frame}
+    \only<1>{\includegraphics[width=\textwidth]{images/p4-no-rot.jpg}}
+    \only<2>{\includegraphics[width=\textwidth]{images/p4-one-rot.jpg}}
+    \only<3>{\includegraphics[width=\textwidth]{images/p4-two-rot.jpg}}
+    \only<4>{\includegraphics[width=\textwidth]{images/p4-full-rot.jpg}}
+    \only<5>{\includegraphics[width=\textwidth]{images/p4-one-trans.jpg}}
+    \only<6>{\includegraphics[width=\textwidth]{images/p4-two-trans.jpg}}
+    \only<7>{\includegraphics[width=\textwidth]{images/p4-three-trans.jpg}}
+    \only<8>{\includegraphics[width=\textwidth]{images/p4-full-trans.jpg}}
+\end{frame}
+
+\section{Dirichlet cells}
+\begin{frame}
+    \begin{definition}\label{def:halfspace}
+        Let $u, v \in \R^n$ be two points. 
+        We call \pause
+        $$
+            H^+(u, v) \coloneqq \{ w \in \R^n \mid d(u,w) \leq d(v, w) \}
+        $$
+        the \emph{halfspace} which includes all points that are closer to $u$ than to $v$ (or have the same distance).
+    \end{definition}\pause
+
+    \begin{definition}[{{\cite[Def. III.1]{plesken2014}}}]
+        Let $O\subseteq \R^n$ be a discrete set and $u \in O$ be a point.
+        We call 
+        $$
+            D(u, O) = \bigcap_{w \in O, w \neq u} H^+(u, w).
+        $$
+        the \emph{Dirichlet cell of $u$}.
+    \end{definition}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        
+        \includegraphics[width=0.9\textwidth]{images/dirichlet-example.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \begin{definition}\label{def:special-gen-pos}
+        Let $\Gamma \leq E(n)$ be a crystallographic group and $v \in \R^n$ be a point.
+        We say $v$ is in \emph{special position for $\Gamma$} if \pause $\stab_{\Gamma}(v) \neq \{Id\}$, \pause otherwise we say $v$ is in \emph{general position for $\Gamma$}.
+    \end{definition}
+
+    \begin{theorem}[{{\cite[Thm. III.11 (ii)]{plesken1994}\label{thm:dirichlet-is-fund-dom}}}]
+        Let $\Gamma \leq E(n)$ be a crystallographic group and $u \in \R^n$ a point in general position. \pause
+        Then the Dirichlet cell $D(u, u^\Gamma)$ is a fundamental domain for $\Gamma$.
+    \end{theorem}
+\end{frame}
+
+\section{Computational aspects}
+\begin{frame}
+    \begin{definition}[{{\label{def:vol}\cite[$§3$, Thm. $7$, with remark after]{forster2012analysis3}}}]
+        Let $B\subset \R^n$ be a closed subset. 
+        We define the \emph{volume} of $B$ as the Lebesgue measure of $B$, so $\vol(B) \coloneqq \lambda(B)$ in the notation of \cite{forster2012analysis3}. 
+    \end{definition} \pause
+
+    \begin{theorem}[{{\cite[§3, Thm. 2]{forster2012analysis3}\label{thm:vol-invar-under-isom}}}]
+        Let $B \subset \R^3$ a closed subset, $\phi \in E(3)$. \\ \pause
+        Then $vol(B^\phi) = vol(B)$.
+    \end{theorem}
+    \pause
+    It can be shown that all fundamental domains of crystallographic groups have the same volume.
+\end{frame}
+
 
 \begin{frame}
     current approach to computations
