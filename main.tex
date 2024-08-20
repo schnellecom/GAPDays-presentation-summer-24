@@ -30,17 +30,41 @@ style=numeric,
 \usepackage{verbatim}
 \usepackage{subcaption} % allow for subfigures
 
-\declaretheoremstyle[
-    headpunct=,
-    spacebelow=2em,
-    spaceabove=1em,
-    postheadspace=\newline,
-    ]{aufgabe}
-\declaretheorem[style=aufgabe]{aufgabe}
-\numberwithin{equation}{aufgabe}
-\addtolength\jot{1ex}
+\usepackage[ruled, algosection]{algorithm2e}
 
-\newtheorem{proposition}{Proposition}
+
+\declaretheoremstyle[
+  spaceabove=\parsep,
+  spacebelow=0,
+  headfont=\bfseries,
+  notefont=\bfseries,
+  notebraces={(}{)},
+  bodyfont=\normalfont,
+  postheadspace=.5em
+]{definition}
+
+\newtheoremstyle{plain}         % name
+    {\parsep}                   % Space above
+    {}                          % Space below
+    {\itshape}                  % Body font
+    {}                          % Indent amount
+    {\bfseries}                 % Theorem head font
+    {.}                         % Punctuation after theorem head
+    {.5em}                      % Space after theorem head
+    {\thmname{#1}\thmnumber{ #2}\thmnote{ \bfseries (#3)}}                 % Theorem head spec (can be left empty, meaning ‘normal’)
+
+\theoremstyle{plain}
+
+% \declaretheorem[sharenumber=algocf]{theorem}
+% \declaretheorem[sharenumber=algocf]{lemma}
+% \declaretheorem[sharenumber=algocf]{corollary}
+\declaretheorem[sharenumber=algocf]{proposition}
+
+% \declaretheorem[sharenumber=algocf]{definition}
+% \declaretheorem[sharenumber=algocf]{example}
+\declaretheorem[sharenumber=algocf]{remark}
+\declaretheorem[sharenumber=algocf]{notation}
+
 \renewcommand\qedsymbol{$\square$}
 
 \newcommand\R{\mathbb R}
@@ -51,6 +75,9 @@ style=numeric,
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\ass}{\underline{Assume:}  }
 \newcommand{\zz}{\underline{t.s.:}  }
+
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
 
 \usetheme[compress]{Berlin}
 \setbeamertemplate{footline}[frame number]{}
@@ -73,14 +100,62 @@ style=numeric,
 \frame[plain]{\titlepage}
 
 \section{Definitions}
-\begin{frame}
-    
-    Fund. Domain
-    Crystallographic group
-    Bieberbach
-    volume of fund dom
-    Dirichlet Cells
 
+% Fund. Domain
+% Crystallographic group
+% Bieberbach
+% volume of fund dom
+% Dirichlet Cells
+\begin{frame}
+    \begin{definition}\label{def:isometry}
+        Let $\phi:\R^n \to \R^n$ be a surjective map. 
+        Then $\phi$ is called an \emph{isometry} if: \pause
+        $$
+            \forall v, w \in \R^n : \pause d(v^\phi, w^\phi) = d(v,w).
+        $$
+        with $d(-,-)$ the Euclidean distance.\\ \pause 
+        The set of all isometries of dimension $n$ is denoted as $E(n)$ and called the \emph{Euclidean group}.
+    \end{definition}
+
+    \begin{lemma}\label{lma:isom-is-grp}
+        Let $E(n)$ be the set of all isometries of a dimension $n \in \N$. \\ \pause
+        Then $E(n)$ is a group with the composition of homomorphisms as the group operation.
+    \end{lemma}
+\end{frame}
+
+\begin{frame}
+    \begin{proposition}[{{\cite[Exa. 1.1, Prop. 1.6]{szczepanski2012geometry}}}]
+        There is an isometry
+        $$
+            E(n) \cong O(n) \ltimes \R^n.
+        $$
+        We denote with $\phi_o$ the orthogonal part of $\phi$ and with $\phi_t$ the vector/translation part of $\phi$.
+    \end{proposition}
+
+    Then the group operation of $\phi, \psi \in E(n)$ is as follows:\pause
+    $$
+        (\phi_o, \phi_t) \circ (\psi_o, \psi_t) \coloneqq (\underbrace{\phi_o \circ \psi_o}_{\substack{\text{op. in }O(n)\\ \text{ i.e. comp. of maps}}}, \psi_t^{\phi_o} + \phi_t),
+    $$\pause
+    and the action of $E(n)$ on $\R^n$ extends to the action of $O(n) \ltimes \R^n$ on $\R^n$:\pause
+    \begin{align*} \label{align:semidirect-action}
+        \R^n \times ( O(n) \ltimes \R^n) \to \R^n: (v, (\phi_o, \phi_t)) \mapsto v^{(\phi_o, \phi_t)} = v^{\phi_o} + \phi_t.
+    \end{align*}
+\end{frame}
+
+\begin{frame}
+    \begin{definition}\label{def:system-of-reps}
+        Let $\lambda$ be a partition of $\R^n$ and let $\emptyset \neq V \subseteq \R^n$ be a set.\\ \pause
+        Then we call $V$ a \emph{system of representatives} of the partition $\lambda$ if $V$ contains exactly one element of each class of $\lambda$.
+    \end{definition} \pause
+
+    \begin{definition}\label{def:fund-dom}
+        Let $\Gamma \leq E(n)$ be a subgroup and $F \subseteq \R^n$ a closed set.
+        Then $F$ is called a \emph{fundamental domain for $\Gamma$} if:\pause
+        \begin{enumerate}[label=(\roman*)]
+            \item $\bigcup_{\gamma \in \Gamma} F^{\langle \gamma \rangle} = \R^n$, \pause
+            \item there is a system of representatives $V \subseteq \R^n$ w.r.t.\ the partition given by the orbits of $\Gamma$ acting on $\R^n$ such that $$F^\circ \subseteq V \subseteq F.$$
+        \end{enumerate}
+    \end{definition}
 \end{frame}
 
 \begin{frame}
