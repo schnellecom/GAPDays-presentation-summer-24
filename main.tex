@@ -250,15 +250,82 @@ style=numeric,
     It can be shown that all fundamental domains of crystallographic groups have the same volume.
 \end{frame}
 
-
 \begin{frame}
-    current approach to computations
-        - theorem that word length corresponds to distance 
-        - algo that incorporates that knowledge
+    \begin{remark}
+        For every crystallographic group $\Gamma$ there is a certain subgroup called the translation subgroup that is denoted by 
+        $$
+            \T(\Gamma) \leq \Gamma.
+        $$
+    \end{remark}
 \end{frame}
 
 \begin{frame}
-    connections to TIA -> deformations
+    \begin{theorem}
+        Let $\Gamma \leq E(n)$ be a crystallographic group with fundamental domain $F$ and $u \in \R^n$ a point in general position. Then we choose a generating set for $\Gamma$ and $I, K$ finite index sets, such that
+        $$
+            \Gamma = \langle \rho_i, \tau_k \mid i \in I, k \in K \rangle,
+        $$\pause
+        with $\tau_k \in \T(\Gamma)$ for all $k \in K$ and $\{ (\tau_k)_t \mid k \in K \}$ are a basis for the lattice induced by $\T(\Gamma)$. Furthermore, let $\rho_i \in \Gamma$  for $i \in I$ be chosen such that 
+        $$
+            \Gamma = \bigcup_{i \in I} \rho_i \T(\Gamma).
+        $$\pause
+        Then there is an $A \in \N$ such that the Dirichlet cell $D(u, u^\Gamma)$ is the intersection of halfspaces $H^+(u,w)$ for words $w$ of length at most $A+1$.
+    \end{theorem}
+\end{frame}
+
+\begin{frame}
+    \begin{algorithm}[H]
+        \caption{Dirichlet Cell}\label{alg:dirichletcell}
+        \LinesNumberedHidden
+        \SetAlgoLined
+        \KwData{a crystallographic group $\Gamma = \langle \rho_i, \tau_k \mid i \in I, k \in K \rangle \leq E(n)$ such that $\Gamma = \cup_{i \in I} \rho_i \T(\Gamma)$, a point $u$ in general position w.r.t. $\Gamma$ and the maximal $length$ of words in $gens$ to check}
+        \KwResult{$triangularComplex$, a triangular complex that is a fundamental domain. }
+        % initialization\;
+        $wordsOfLenghtL$ $\leftarrow$ all words in the generators $gens$ of length at most $length$\,
+        
+        % \tcp{generate orbit of $u$ under action of $wordsOfLenghtL$}
+        % elementsInOrbit := []\;
+        \For{ $\gamma$ in wordsOfLenghtL}{
+            Add(elementsInOrbit, $u^\gamma$)\;
+        }
+    
+        $halfspaces \leftarrow$ halfspaces $H_{u,v}$ for all $v \in elementsInOrbit$\;
+    
+        $fundDom \leftarrow$ triangular complex given by intersection of $halfspaces$\;
+    
+        return $fundDom$\;
+    \end{algorithm}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        \textbf{Time for some examples}
+    \end{center}
+\end{frame}
+
+\section{Outlook}
+\begin{frame}
+    \begin{example}{Current state}
+        Previously presented algorithm is already implemented as part of my masters thesis.
+    \end{example}\pause
+    \begin{block}{Next steps}
+        \begin{itemize}
+            \item Implement above in SimplicialSurfaces Package
+            \item Improve algorithm by automatically running until expected volume is reached
+            \item Check if $h$-vector conversion can be done more efficiently
+            \item Consider numerical effects
+        \end{itemize}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}
+    \begin{exampleblock}{Why work on this?}
+        Goal is to deform fundamental domains in such a way, that they continue to be fundamental domains but also fulfill the \emph{topological interlocking property}.
+    \end{exampleblock}\pause
+    \begin{definition}
+        A block $B \subseteq \R^3$ is called topologically interlocking, if there is an assembly of it, such that by fixing a subset of the assembly there is no subset of the remaining blocks that can be moved without intersecting any blocks.  
+    \end{definition}
 \end{frame}
 
 \begin{frame}
