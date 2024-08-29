@@ -122,19 +122,20 @@ style=numeric,
 % volume of fund dom
 % Dirichlet Cells
 \begin{frame}
-    \begin{definition}\label{def:isometry}
+    \begin{definition}[Isometry]\label{def:isometry}
         Let $\phi:\R^n \to \R^n$ be a surjective map. 
-        Then $\phi$ is called an \emph{isometry} if: \pause
+        Then $\phi$ is called an \emph{isometry} if:
         $$
             \forall v, w \in \R^n : \pause d(v^\phi, w^\phi) = d(v,w).
         $$
         with $d(-,-)$ the Euclidean distance.\\ \pause 
         The set of all isometries of dimension $n$ is denoted as $E(n)$ and called the \emph{Euclidean group}.
     \end{definition}
-
+    \pause
     \begin{lemma}\label{lma:isom-is-grp}
         Let $E(n)$ be the set of all isometries of a dimension $n \in \N$. \\ \pause
-        Then $E(n)$ is a group with the composition of homomorphisms as the group operation.
+        Then $E(n)$ is a group with the composition of homomorphisms as the group operation. \\
+        Further $E(n)$ operates on $\R^n$ by matrix vector multiplication.
     \end{lemma}
 \end{frame}
 
@@ -158,18 +159,25 @@ style=numeric,
 \end{frame}
 
 \begin{frame}
-    \begin{definition}\label{def:system-of-reps}
+    \begin{definition}[System of representatives]\label{def:system-of-reps}
         Let $\lambda$ be a partition of $\R^n$ and let $\emptyset \neq V \subseteq \R^n$ be a set.\\ \pause
         Then we call $V$ a \emph{system of representatives} of the partition $\lambda$ if $V$ contains exactly one element of each class of $\lambda$.
     \end{definition} \pause
 
-    \begin{definition}\label{def:fund-dom}
+    \begin{definition}[Fundamental domain]\label{def:fund-dom}
         Let $\Gamma \leq E(n)$ be a subgroup and $F \subseteq \R^n$ a closed set.
         Then $F$ is called a \emph{fundamental domain for $\Gamma$} if:\pause
         \begin{enumerate}[label=(\roman*)]
             \item $\bigcup_{\gamma \in \Gamma} F^{\langle \gamma \rangle} = \R^n$, \pause
             \item there is a system of representatives $V \subseteq \R^n$ w.r.t.\ the partition given by the orbits of $\Gamma$ acting on $\R^n$ such that $$F^\circ \subseteq V \subseteq F.$$
         \end{enumerate}
+    \end{definition}
+\end{frame}
+
+\begin{frame}
+    \begin{definition}[Crystallographic group]
+        Let $\Gamma \leq E(n)$ be a subgroup.
+        $\Gamma$ is called a \emph{crystallographic group} if $\Gamma$ is discrete and there exists a compact fundamental domain for $\Gamma$.\\
     \end{definition}
 \end{frame}
 
@@ -197,7 +205,7 @@ style=numeric,
 
 \section{Dirichlet cells}
 \begin{frame}
-    \begin{definition}\label{def:halfspace}
+    \begin{definition}[Halfspace]\label{def:halfspace}
         Let $u, v \in \R^n$ be two points. 
         We call \pause
         $$
@@ -206,7 +214,7 @@ style=numeric,
         the \emph{halfspace} which includes all points that are closer to $u$ than to $v$ (or have the same distance).
     \end{definition}\pause
 
-    \begin{definition}[{{\cite[Def. III.1]{plesken2014}}}]
+    \begin{definition}Dirichlet cell [{{\cite[Def. III.1]{plesken2014}}}]
         Let $O\subseteq \R^n$ be a discrete set and $u \in O$ be a point.
         We call 
         $$
@@ -224,20 +232,27 @@ style=numeric,
 \end{frame}
 
 \begin{frame}
-    \begin{definition}\label{def:special-gen-pos}
+    \begin{definition}[Points in special/general position]\label{def:special-gen-pos}
         Let $\Gamma \leq E(n)$ be a crystallographic group and $v \in \R^n$ be a point.
-        We say $v$ is in \emph{special position for $\Gamma$} if \pause $\stab_{\Gamma}(v) \neq \{Id\}$, \pause otherwise we say $v$ is in \emph{general position for $\Gamma$}.
+        We say $v$ is in \emph{special position for $\Gamma$} if $\stab_{\Gamma}(v) \neq \{Id\}$, \pause otherwise we say $v$ is in \emph{general position for $\Gamma$}.
     \end{definition}
 
     \begin{theorem}[{{\cite[Thm. III.11 (ii)]{plesken1994}\label{thm:dirichlet-is-fund-dom}}}]
         Let $\Gamma \leq E(n)$ be a crystallographic group and $u \in \R^n$ a point in general position. \pause
         Then the Dirichlet cell $D(u, u^\Gamma)$ is a fundamental domain for $\Gamma$.
     \end{theorem}
+    \pause
+    \begin{example}
+        Let $\Gamma \leq E(n)$ a crystallographic group and $u \in \R^n$ a point in general position. Then the following is a fundamental domain:
+        $$
+            D(u, u^\Gamma) = \bigcap_{w^\gamma, \gamma \in \Gamma \setminus \{ Id \}} H^+(u, w).
+        $$
+    \end{example}
 \end{frame}
 
 \section{Computational aspects}
 \begin{frame}
-    \begin{definition}[{{\label{def:vol}\cite[$§3$, Thm. $7$, with remark after]{forster2012analysis3}}}]
+    \begin{definition}[Volume]
         Let $B\subset \R^n$ be a closed subset. 
         We define the \emph{volume} of $B$ as the Lebesgue measure of $B$, so $\vol(B) \coloneqq \lambda(B)$ in the notation of \cite{forster2012analysis3}. 
     \end{definition} \pause
@@ -291,7 +306,7 @@ style=numeric,
     
         $halfspaces \leftarrow$ halfspaces $H_{u,v}$ for all $v \in elementsInOrbit$\;
     
-        $fundDom \leftarrow$ triangular complex given by intersection of $halfspaces$\;
+        $fundDom \leftarrow$ triangular complex given by intersection of $halfspaces$ (done with polymake(ing))\;
     
         return $fundDom$\;
     \end{algorithm}
@@ -305,26 +320,26 @@ style=numeric,
 
 \section{Outlook}
 \begin{frame}
-    \begin{example}{Current state}
-        Previously presented algorithm is already implemented as part of my masters thesis.
-    \end{example}\pause
+    \begin{exampleblock}{Current state}
+        Previously presented algorithm is already programmed in as part of my masters thesis.
+    \end{exampleblock}\pause
     \begin{block}{Next steps}
-        \begin{itemize}
-            \item Implement above in SimplicialSurfaces Package
-            \item Improve algorithm by automatically running until expected volume is reached
-            \item Check if $h$-vector conversion can be done more efficiently
-            \item Consider numerical effects
+        \begin{itemize}[label={-}]
+            \item Implement the algorithm in SimplicialSurfaces Package \pause
+            \item Improve algorithm by automatically running until expected volume is reached \pause
+            \item Check if $h$-vector conversion can be done more efficiently \pause
+            \item Consider numerical effects \pause
         \end{itemize}
     \end{block}
     
 \end{frame}
 
 \begin{frame}
-    \begin{exampleblock}{Why work on this?}
+    \begin{exampleblock}{Motivation}
         Goal is to deform fundamental domains in such a way, that they continue to be fundamental domains but also fulfill the \emph{topological interlocking property}.
     \end{exampleblock}\pause
-    \begin{definition}
-        A block $B \subseteq \R^3$ is called topologically interlocking, if there is an assembly of it, such that by fixing a subset of the assembly there is no subset of the remaining blocks that can be moved without intersecting any blocks.  
+    \begin{definition}{Topologically interlocking}
+        A block $B \subseteq \R^3$ is called topologically interlocking, if there is an assembly of it, such that by fixing a subset of the assembly there is no subset of the remaining blocks that can be moved without intersecting any blocks.
     \end{definition}
 \end{frame}
 
